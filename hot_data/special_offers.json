@@ -1,0 +1,26 @@
+[
+  {
+    "family_name": "Special Offer 1",
+    "family_code": "GANTI_DENGAN_FAMCODE_ASLI",
+    "is_enterprise": false,
+    "variant_name": "Variant Name",
+    "option_name": "Option Name",
+    "order": 1
+  },
+  {
+    "family_name": "Special Offer 2",
+    "family_code": "GANTI_DENGAN_FAMCODE_ASLI",
+    "is_enterprise": false,
+    "variant_name": "Variant Name",
+    "option_name": "Option Name",
+    "order": 1
+  },
+  {
+    "family_name": "Special Offer 3",
+    "family_code": "GANTI_DENGAN_FAMCODE_ASLI",
+    "is_enterprise": false,
+    "variant_name": "Variant Name",
+    "option_name": "Option Name",
+    "order": 1
+  }
+]
