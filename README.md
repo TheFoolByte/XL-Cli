@@ -1,62 +1,152 @@
-# MYnyak Engsel Sunset
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Platform-Windows%20|%20Linux%20|%20Termux-green?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
+</p>
 
-CLI client for a certain Indonesian mobile internet service provider.
+<h1 align="center">🔧 XL-CLI</h1>
 
-# How to get environtment Variables
+<p align="center">
+  <strong>Advanced CLI Tool for Indonesian Mobile Service Provider</strong>
+</p>
 
-Go to [OUR TELEGRAM CHANNEL](https://t.me/TheBuddie)
-Copy the provided environment variables and paste it into a text file named `.env` in the same directory as `main.py`.
-You can use nano or any text editor to create the file.
+<p align="center">
+  A powerful command-line interface for managing packages, purchases, and account operations with premium theming and Telegram integration.
+</p>
 
-# How to run with TERMUX
+---
 
-1. Update & Upgrade Termux
+## ✨ Features
 
-```
-pkg update && pkg upgrade -y
-```
+| Feature                       | Description                                           |
+| ----------------------------- | ----------------------------------------------------- |
+| 🎨 **Premium Theme**          | Beautiful Cyan/Blue gradient UI with modern ASCII art |
+| 📦 **Multi-Famcode Purchase** | Batch purchase from multiple family codes (max 20)    |
+| 🔔 **Telegram Notifications** | Auto-send purchase results to Telegram group/topic    |
+| 🔐 **Secure Auth**            | OTP-based authentication with token refresh           |
+| 📊 **Transaction History**    | View and track all your transactions                  |
+| ⭐ **Hot Packages**           | Quick access to trending/popular packages             |
+| 🔖 **Bookmarks**              | Save your favorite packages for quick access          |
 
-2. Install Git
+---
 
-```
-pkg install git -y
-```
+## 🚀 Quick Start
 
-3. Clone this repo
+### Prerequisites
 
-```
+- Python 3.8+
+- pip (Python package manager)
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
 git clone https://github.com/TheFoolByte/XL-Cli.git
+cd XL-Cli
 ```
 
-4. Open the folder
+**2. Install dependencies**
 
-```
-cd me-cli-sunset
-```
-
-5. Setup
-
-```
-bash setup.sh
+```bash
+pip install -r requirements.txt
 ```
 
-6. Run the script
+**3. Configure environment**
 
+```bash
+cp .env.template .env
+# Edit .env with your credentials
 ```
+
+**4. Run the application**
+
+```bash
 python main.py
 ```
 
-# Info
+---
 
-## PS for Certain Indonesian mobile internet service provider
+## 📱 Termux Installation
 
-Instead of just delisting the package from the app, ensure the user cannot purchase it.
-What's the point of strong client side security when the server don't enforce it?
+```bash
+# Update & Upgrade
+pkg update && pkg upgrade -y
 
-## Terms of Service
+# Install requirements
+pkg install git python -y
 
-By using this tool, the user agrees to comply with all applicable laws and regulations and to release the developer from any and all claims arising from its use.
+# Clone & Setup
+git clone https://github.com/TheFoolByte/XL-Cli.git
+cd XL-Cli
+bash setup.sh
 
-## Contact
+# Run
+python main.py
+```
 
-t.me/FoolByte
+---
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Copy `.env.template` to `.env` and fill in the required values:
+
+| Variable             | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `BASE_API_URL`       | API base URL                                 |
+| `API_KEY`            | Your API key                                 |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token (optional)                |
+| `TELEGRAM_CHAT_ID`   | Telegram chat/group ID (optional)            |
+| `TELEGRAM_TOPIC_ID`  | Telegram topic ID for supergroups (optional) |
+
+> 📢 Get environment variables from [Our Telegram Channel](https://t.me/TheBuddie)
+
+---
+
+## 🔔 Telegram Integration
+
+Enable automatic notifications for successful purchases:
+
+1. Create a bot via [@BotFather](https://t.me/BotFather)
+2. Add the bot to your group/channel
+3. Configure `.env` with your bot token and chat ID
+4. For supergroups with topics, add the topic ID
+
+---
+
+## 📁 Project Structure
+
+```
+XL-Cli/
+├── main.py              # Entry point
+├── app/
+│   ├── menus/           # UI menus and interactions
+│   ├── client/          # API clients
+│   └── service/         # Core services (auth, telegram, etc.)
+├── results/             # Purchase results (auto-generated)
+├── hot_data/            # Hot package configurations
+└── .env                 # Environment configuration
+```
+
+---
+
+## ⚠️ Disclaimer
+
+> **Terms of Service**: By using this tool, the user agrees to comply with all applicable laws and regulations and to release the developer from any and all claims arising from its use.
+
+---
+
+## 📬 Contact
+
+<p align="center">
+  <a href="https://t.me/FoolByte"><img src="https://img.shields.io/badge/Telegram-@FoolByte-blue?style=for-the-badge&logo=telegram" alt="Telegram"></a>
+  <a href="https://t.me/TheBuddie"><img src="https://img.shields.io/badge/Channel-@TheBuddie-blue?style=for-the-badge&logo=telegram" alt="Channel"></a>
+</p>
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://t.me/FoolByte">TheFoolByte</a>
+</p>
