@@ -148,5 +148,5 @@ XL-Cli/
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://t.me/FoolByte">TheFoolByte</a>
+  Mofified with ❤️ by <a href="https://t.me/FoolByte">TheFoolByte</a>
 </p>
