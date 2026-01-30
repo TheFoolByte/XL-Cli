@@ -8,6 +8,7 @@ from app.service.auth import AuthInstance
 from app.service.decoy import DecoyInstance
 from app.type_dict import PaymentItem
 from app.client.purchase.balance import settlement_balance
+from app.service.telegram_bot import send_purchase_notification
 
 # Ensure results folder exists
 RESULTS_DIR = "results"
@@ -225,6 +226,10 @@ def multi_famcode_purchase(
                         
                         # Save to results folder
                         save_result_to_file(family_code, package_info, res)
+                        
+                        # Send Telegram notification
+                        send_purchase_notification(family_code, package_info, res, tokens.get("msisdn", ""))
+                        
                         all_successful_purchases.append({
                             "famcode": family_code,
                             "package": package_info
