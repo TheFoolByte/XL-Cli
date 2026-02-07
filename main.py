@@ -29,6 +29,7 @@ from app.menus.notification import show_notification_menu
 from app.menus.store.segments import show_store_segments_menu
 from app.menus.store.search import show_family_list_menu, show_store_packages_menu
 from app.menus.store.redemables import show_redeemables_menu
+from app.menus.catalog_export import show_catalog_export_menu
 from app.client.registration import dukcapil
 
 WIDTH = 55
@@ -89,6 +90,7 @@ def show_second_menu(profile):
         print(section_header("MENU KEDUA", WIDTH))
         print(menu_item("1", "Multi-FamCode Purchase"))
         print(menu_item("2", "Special Offers", highlight=True))
+        print(menu_item("3", "Catalog Tools"))
         print(box_line(WIDTH, '─'))
         
         # Fitur Lainnya Section
@@ -165,12 +167,8 @@ def show_second_menu(profile):
             pause()
         elif choice == "2":
             show_special_offers_menu()
-        #elif choice == "3":
-            #print("\n[Fitur 3 belum diimplementasi]")
-            #pause()
-        #elif choice == "4":
-            #print("\n[Fitur 4 belum diimplementasi]")
-            #pause()
+        elif choice == "3":
+            show_catalog_export_menu(profile)
         elif choice.lower() == "c":
             show_family_info(AuthInstance.api_key, AuthInstance.get_active_tokens())
         elif choice.lower() == "d":

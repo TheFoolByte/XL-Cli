@@ -15,6 +15,11 @@ class DecoyPackage:
     
     need_prio_decoys = ["PRIORITAS", "PRIOHYBRID", "GO"]
     prefix = "default-"
+    prio_balance_decoy_by_subscription = {
+        "PRIOHYBRID": "priohybrid-balance",
+        "PRIORITAS": "priopascabayar-balance",
+        "GO": "priopascabayar-balance",
+    }
     
     supported_payment_types = ["balance", "qris", "qris0"]
     
@@ -36,6 +41,16 @@ class DecoyPackage:
             "last_fetched_at": 0
         },
         "prio-balance": {
+            "option_code": "",
+            "price": 0,
+            "last_fetched_at": 0
+        },
+        "priohybrid-balance": { 
+            "option_code": "",
+            "price": 0,
+            "last_fetched_at": 0
+        },
+        "priopascabayar-balance": {
             "option_code": "",
             "price": 0,
             "last_fetched_at": 0
@@ -69,8 +84,13 @@ class DecoyPackage:
         
         current_subscriber_id = active_user.get("subscriber_id", "")
         current_subscription_type = active_user.get("subscription_type", "")
-        if self.subscriber_id != current_subscriber_id:
-            print(f"Subscriber ID changed from {self.subscriber_id} to {current_subscriber_id}. Resetting decoy data.")
+        subscriber_changed = self.subscriber_id != current_subscriber_id
+        subscription_changed = self.subscription_type != current_subscription_type
+        if subscriber_changed or subscription_changed:
+            if subscriber_changed:
+                print(f"Subscriber ID changed from {self.subscriber_id} to {current_subscriber_id}. Resetting decoy data.")
+            else:
+                print(f"Subscription type changed from {self.subscription_type} to {current_subscription_type}. Resetting decoy data.")
             self.reset_decoys()
             self.subscriber_id = current_subscriber_id
             self.subscription_type = current_subscription_type
@@ -79,6 +99,13 @@ class DecoyPackage:
                 self.prefix = "prio-"
             else:
                 self.prefix = "default-"
+
+    def resolve_decoy_name(self, payment_type: str):
+        if payment_type == "balance":
+            special_prio_decoy = self.prio_balance_decoy_by_subscription.get(self.subscription_type)
+            if special_prio_decoy:
+                return special_prio_decoy
+        return self.prefix + payment_type
     
     def fetch_decoy_data(self, decoy_name):
         active_user = AuthInstance.get_active_user()
@@ -126,7 +153,7 @@ class DecoyPackage:
             print(f"Unsupported payment type: {payment_type}")
             return None
         
-        decoy_name = self.prefix + payment_type
+        decoy_name = self.resolve_decoy_name(payment_type)
         
         selected_decoy = self.decoys.get(decoy_name)
         if selected_decoy is None:
